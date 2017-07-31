@@ -4,13 +4,13 @@ def score(game):
     in_first_half = True
     for game_roll in range(len(game)):
         if game[game_roll] == '/':
-            result += 10 - last
+            result += 10 - last_point
         else:
             result += get_value(game[game_roll])
         if frame < 10  and get_value(game[game_roll]) == 10:
             result = is_spare_or_strike(game, game_roll, result)
-        last = get_value(game[game_roll])
         frame, in_first_half = frame_check(frame, game, game_roll, in_first_half)
+        last_point = get_value(game[game_roll])
     return result
 
 
